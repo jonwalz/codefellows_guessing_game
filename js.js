@@ -6,24 +6,30 @@ var myColor = 'yes';
 var colorGuess = prompt('Is my favorite color blue?', 'yes or no');
 var colorElem = document.getElementById('favoriteColor');
 
+// colors
+var correctTextColor = "#7AC82B";
+var incorrectTextColor = "#DE5A30";
+var correctBGcolor = '#C2F58F';
+var incorrectBGcolor = '#FFD8CC';
+
 if (colorGuess.toLowerCase() == myColor) {
     alert("You are correct!");
     console.log('Look out, someone is trying to know you. They guessed your favorite color: ' + colorGuess);
 
     // reveal answer in element after correct guess
     colorElem.textContent = "blue";
-    colorElem.style.color = "#7AC82B"; // colored green-ish for correct answer
-    colorElem.previousElementSibling.style.color = "#7AC82B";
-    colorElem.parentNode.style.backgroundColor = "#C2F58F";
+    colorElem.style.color = correctTextColor; // colored green-ish for correct answer
+    colorElem.previousElementSibling.style.color = correctTextColor;
+    colorElem.parentNode.style.backgroundColor = correctBGcolor;
 } else {
     alert("Nope, maybe next time!");
     console.log("Hey, someone's trying to know about you, but they didn't guess right so it's all good!");
 
     // reveal that they guessed Wrong
     colorElem.textContent = "You guessed wrong";
-    colorElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
-    colorElem.previousElementSibling.style.color = "#DE5A30";
-    colorElem.parentNode.style.backgroundColor = "#FF9877";
+    colorElem.style.color = incorrectTextColor; // colored red-ish for wrong answer
+    colorElem.previousElementSibling.style.color = incorrectTextColor;
+    colorElem.parentNode.style.backgroundColor = incorrectBGcolor;
 }
 
 /**********************
@@ -40,17 +46,17 @@ if (foodGuess.toLowerCase() == myFood) {
 
     // reveal answer in element after correct guessed
     foodElem.textContent = "You're right! it's Thai food!";
-    foodElem.style.color = "#7AC82B"; // colored green-ish for correct answer
-    foodElem.previousElementSibling.style.color = "#7AC82B";
-    foodElem.parentNode.style.backgroundColor = "#C2F58F";
+    foodElem.style.color = correctTextColor; // colored green-ish for correct answer
+    foodElem.previousElementSibling.style.color = correctTextColor;
+    foodElem.parentNode.style.backgroundColor = correctBGcolor;
 } else {
     alert("Nope! I know, it's a hard one");
     console.log('They guessed wrong again lol');
 
     foodElem.textContent = "Oops, maybe next time!";
-    foodElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
-    foodElem.previousElementSibling.style.color = "#DE5A30";
-    foodElem.parentNode.style.backgroundColor = "#FF9877";
+    foodElem.style.color = incorrectTextColor; // colored red-ish for wrong answer
+    foodElem.previousElementSibling.style.color = incorrectTextColor;
+    foodElem.parentNode.style.backgroundColor = incorrectBGcolor;
 }
 
 /************************
@@ -67,17 +73,17 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
 
     // reveal answer in element after correct guess
     birthplaceElem.textContent = "Nope, I was born in Oregon City";
-    birthplaceElem.style.color = "#7AC82B"; // colored green-ish for correct answer
-    birthplaceElem.previousElementSibling.style.color = "#7AC82B";
-    birthplaceElem.parentNode.style.backgroundColor = "#C2F58F";
+    birthplaceElem.style.color = correctTextColor; // colored green-ish for correct answer
+    birthplaceElem.previousElementSibling.style.color = correctTextColor;
+    birthplaceElem.parentNode.style.backgroundColor = correctBGcolor;
 } else {
     alert("Wrong! (hint: it's Oregon city)");
     console.log('They blew it');
 
     birthplaceElem.textContent = "We all started somewhere...";
-    birthplaceElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
-    birthplaceElem.previousElementSibling.style.color = "#DE5A30";
-    birthplaceElem.parentNode.style.backgroundColor = "#FF9877";
+    birthplaceElem.style.color = incorrectTextColor; // colored red-ish for wrong answer
+    birthplaceElem.previousElementSibling.style.color = incorrectTextColor;
+    birthplaceElem.parentNode.style.backgroundColor = incorrectBGcolor;
 }
 
 /***********************
