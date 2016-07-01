@@ -1,15 +1,20 @@
-// Favorite Color Logic
-var myColor = 'blue';
-var colorGuess = prompt('What is my favorite color?');
+/***********************
+   Favorite Color Logic
+***********************/
+
+var myColor = 'yes';
+var colorGuess = prompt('Is my favorite color blue?', 'yes or no');
 var colorElem = document.getElementById('favoriteColor');
 
-if (colorGuess == myColor) {
+if (colorGuess.toLowerCase() == myColor) {
     alert("You are correct!");
     console.log('Look out, someone is trying to know you. They guessed your favorite color: ' + colorGuess);
 
     // reveal answer in element after correct guess
-    colorElem.textContent = myColor;
-    colorElem.style.color = "#D6FAB2"; // colored green-ish for correct answer
+    colorElem.textContent = "blue";
+    colorElem.style.color = "#7AC82B"; // colored green-ish for correct answer
+    colorElem.previousElementSibling.style.color = "#7AC82B";
+    colorElem.parentNode.style.backgroundColor = "#C2F58F";
 } else {
     alert("Nope, maybe next time!");
     console.log("Hey, someone's trying to know about you, but they didn't guess right so it's all good!");
@@ -17,44 +22,60 @@ if (colorGuess == myColor) {
     // reveal that they guessed Wrong
     colorElem.textContent = "You guessed wrong";
     colorElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
+    colorElem.previousElementSibling.style.color = "#DE5A30";
+    colorElem.parentNode.style.backgroundColor = "#FF9877";
 }
 
+/**********************
 // Favorite Food Logic
-var myFood = 'thai';
-var foodGuess = prompt('What is my favorite type of food?');
+**********************/
+
+var myFood = 'no';
+var foodGuess = prompt('Is my favorite food sushi?', 'yes or no');
 var foodElem = document.getElementById('favoriteFood');
 
-if (foodGuess == myFood) {
+if (foodGuess.toLowerCase() == myFood) {
     alert('Wow, you got it!');
     console.log('Oh snap, the user is getting to know you! They guessed your favorite food. Check it: ' + myFood);
 
     // reveal answer in element after correct guessed
-    foodElem.textContent = myFood;
-    foodElem.style.color = "#D6FAB2"; // colored green-ish for correct answer
+    foodElem.textContent = "You're right! it's Thai food!";
+    foodElem.style.color = "#7AC82B"; // colored green-ish for correct answer
+    foodElem.previousElementSibling.style.color = "#7AC82B";
+    foodElem.parentNode.style.backgroundColor = "#C2F58F";
 } else {
     alert("Nope! I know, it's a hard one");
     console.log('They guessed wrong again lol');
 
     foodElem.textContent = "Oops, maybe next time!";
     foodElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
+    foodElem.previousElementSibling.style.color = "#DE5A30";
+    foodElem.parentNode.style.backgroundColor = "#FF9877";
 }
 
-// Where I was born logic
-var myBirthplace = 'oregon city';
-var myBirthplaceGuess = prompt('Where was I born?');
+/************************
+   Where I was born logic
+*************************/
+
+var myBirthplace = 'no';
+var myBirthplaceGuess = prompt('Was I born in Portland?', 'yes or no');
 var birthplaceElem = document.getElementById('myBirthplace');
 
-if (myBirthplaceGuess == myBirthplace) {
+if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
     alert("No way! You coudn't have known that");
     console.log("DANGER DANGER DANGER!!! They know where you're from!");
 
     // reveal answer in element after correct guess
-    birthplaceElem.textContent = myBirthplace;
-    birthplaceElem.style.color = "#D6FAB2"; // colored green-ish for correct answer
+    birthplaceElem.textContent = "Nope, I was born in Oregon City";
+    birthplaceElem.style.color = "#7AC82B"; // colored green-ish for correct answer
+    birthplaceElem.previousElementSibling.style.color = "#7AC82B";
+    birthplaceElem.parentNode.style.backgroundColor = "#C2F58F";
 } else {
     alert("Wrong! (hint: it's Oregon city)");
     console.log('They blew it');
 
     birthplaceElem.textContent = "We all started somewhere...";
     birthplaceElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
+    birthplaceElem.previousElementSibling.style.color = "#DE5A30";
+    birthplaceElem.parentNode.style.backgroundColor = "#FF9877";
 }

@@ -3,6 +3,7 @@ body {
     box-sizing: border-box;
     background-color: #84B9D9;
     color: #D5EBF8;
+
 }
 section {
     width: 100%;
@@ -19,8 +20,8 @@ section div h3 {
 #myBirthplaceBlock {
     display: inline-block;
     text-align: center;
-    background-color: #619FC3;
     padding: 20px;
     width: 30%;
     margin: 0 auto;
+    transition: background-color 1s ease;
 }
