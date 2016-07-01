@@ -12,11 +12,11 @@ if (colorGuess == myColor) {
     colorElem.style.color = "#D6FAB2"; // colored green-ish for correct answer
 } else {
     alert("Nope, maybe next time!");
-    console.log("Hey, someones trying to know about you, but they didn't guess right so it's all good");
+    console.log("Hey, someone's trying to know about you, but they didn't guess right so it's all good!");
 
     // reveal that they guessed Wrong
     colorElem.textContent = "You guessed wrong";
-    colorElem.style.color = "#FF9877"; // colored red-ish for wrong answer
+    colorElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
 }
 
 // Favorite Food Logic
@@ -36,7 +36,7 @@ if (foodGuess == myFood) {
     console.log('They guessed wrong again lol');
 
     foodElem.textContent = "Oops, maybe next time!";
-    foodElem.style.color = "#FF9877"; // colored red-ish for wrong answer
+    foodElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
 }
 
 // Where I was born logic
@@ -56,5 +56,5 @@ if (myBirthplaceGuess == myBirthplace) {
     console.log('They blew it');
 
     birthplaceElem.textContent = "We all started somewhere...";
-    birthplaceElem.style.color = "#FF9877"; // colored red-ish for wrong answer
+    birthplaceElem.style.color = "#FFC8B6"; // colored red-ish for wrong answer
 }
