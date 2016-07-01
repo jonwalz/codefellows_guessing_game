@@ -40,14 +40,14 @@ var myBirthplace = 'oregon city';
 var myBirthplaceGuess = prompt('Where was I born?');
 var birthplaceElem = document.getElementById('myBirthplace');
 
-if (myBirthplace == myBirthplace) {
+if (myBirthplaceGuess == myBirthplace) {
     alert("No way! You coudn't have known that");
-    console.log('DANGER DANGER DANGER');
+    console.log("DANGER DANGER DANGER!!! They know where you're from!");
 
     // reveal answer in element after correct guess
     birthplaceElem.textContent = myBirthplace;
 } else {
-    alert("Wrong! \(hint, it's Oregon\)");
+    alert("Wrong! \(hint, it's Oregon\ city)");
     console.log('They blew it');
 
     birthplaceElem.textContent = "We all started somewhere...";
