@@ -103,4 +103,9 @@ do {
 // Inset to document
 
 var ageDiv = document.getElementById('numberOfGuesses');
-ageDiv.textContent = numberOfGuesses;
+
+if(numberOfGuesses == 1) {
+    ageDiv.textContent = numberOfGuesses + " Try!";
+} else {
+    ageDiv.textContent = numberOfGuesses + " Tries!";
+}
