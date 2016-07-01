@@ -92,11 +92,21 @@ do {
     var ageGuess = parseInt(prompt("Guess my age!"));
     console.log(numberOfGuesses);
     if (ageGuess < 31) {
-        alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
-        numberOfGuesses++;
+        if (ageGuess == 30) {
+            alert("Why thank you, but I'm " + (myAge - ageGuess) + " year older than that!");
+            numberOfGuesses++;
+        } else {
+            alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
+            numberOfGuesses++;
+        }
     } else if (ageGuess > 31) {
-        alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
-        numberOfGuesses++;
+        if (ageGuess == 32) {
+            alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " year!");
+            numberOfGuesses++;
+        } else {
+            alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
+            numberOfGuesses++;
+        }
     }
 } while (ageGuess != myAge);
 
@@ -104,7 +114,7 @@ do {
 
 var ageDiv = document.getElementById('numberOfGuesses');
 
-if(numberOfGuesses == 1) {
+if (numberOfGuesses == 1) {
     ageDiv.textContent = numberOfGuesses + " Try!";
 } else {
     ageDiv.textContent = numberOfGuesses + " Tries!";
