@@ -3,7 +3,6 @@ body {
     box-sizing: border-box;
     background-color: #84B9D9;
     color: #D5EBF8;
-
 }
 section {
     width: 100%;
@@ -17,19 +16,15 @@ section div {
 section div h3 {
     font-weight: 200;
 }
-#myColorBlock,
-#myFoodBlock,
-#myBirthplaceBlock {
+#myColorBlock, #myFoodBlock, #myBirthplaceBlock {
     display: inline-block;
     text-align: center;
     width: 30%;
     margin: 0 auto;
     border-radius: 5px;
     transition: background-color 2s ease;
-
     animation-name: blurIn;
 }
-
 #myAge {
     background-color: #E3FCCA;
     color: #7AC82B;
@@ -41,13 +36,4 @@ section div h3 {
     border-radius: 5px;
     transition: background-color 1s ease;
     min-height: 10vh;
-}
-
-@keyframes blurIn {
-    from {
-        color: transparent;
-    }
-    to {
-        color: inherit;
-    }
 }
