@@ -88,7 +88,7 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
 }
 
 /***********************
-     Guess My Age
+     Guess My Age Logic
 ***********************/
 
 var myAge = 31;
@@ -97,7 +97,7 @@ var numberOfGuesses = 1;
 
 do {
     var ageGuess = parseInt(prompt("Guess my age!"));
-    console.log(numberOfGuesses);
+    console.log("Number of guesses on your age: " + numberOfGuesses);
     if (ageGuess < 31) {
         if (ageGuess == 30) {
             alert("Why thank you, but I'm " + (myAge - ageGuess) + " year older than that!");
