@@ -27,7 +27,7 @@ if (colorGuess.toLowerCase() == myColor) {
 }
 
 /**********************
-// Favorite Food Logic
+   Favorite Food Logic
 **********************/
 
 var myFood = 'no';
@@ -79,3 +79,23 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
     birthplaceElem.previousElementSibling.style.color = "#DE5A30";
     birthplaceElem.parentNode.style.backgroundColor = "#FF9877";
 }
+
+/***********************
+   Favorite Color Logic
+***********************/
+
+var myAge = 31;
+var ageGuess = '';
+var numberOfGuesses = 1;
+
+do {
+    var ageGuess = parseInt(prompt("Guess my age!"));
+    console.log(numberOfGuesses);
+    if (ageGuess < 31) {
+        alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
+        numberOfGuesses++;
+    } else if (ageGuess > 31) {
+        alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
+        numberOfGuesses++;
+    }
+} while (ageGuess != myAge);

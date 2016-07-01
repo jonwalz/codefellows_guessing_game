@@ -8,9 +8,10 @@ body {
 section {
     width: 100%;
     text-align: center;
+    margin-top: 20px;
 }
 section div {
-    min-height: 100vh;
+    min-height: 50vh;
 }
 section div h3 {
     font-weight: 200;
