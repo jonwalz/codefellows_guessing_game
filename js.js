@@ -9,7 +9,7 @@ var colorElem = document.getElementById('favoriteColor');
 // colors
 var correctTextColor = "#7AC82B";
 var incorrectTextColor = "#DE5A30";
-var correctBGcolor = '#C2F58F';
+var correctBGcolor = '#E3FCCA';
 var incorrectBGcolor = '#FFD8CC';
 
 if (colorGuess.toLowerCase() == myColor) {
@@ -25,7 +25,7 @@ if (colorGuess.toLowerCase() == myColor) {
     alert("Nope, maybe next time!");
     console.log("Hey, someone's trying to know about you, but they didn't guess right so it's all good!");
 
-    // reveal that they guessed Wrong
+    // reveal that they didn't guess correctly
     colorElem.textContent = "You guessed wrong";
     colorElem.style.color = incorrectTextColor; // colored red-ish for wrong answer
     colorElem.previousElementSibling.style.color = incorrectTextColor;
@@ -52,7 +52,7 @@ if (foodGuess.toLowerCase() == myFood) {
 } else {
     alert("Nope! I know, it's a hard one");
     console.log('They guessed wrong again lol');
-
+    // reveal that they didn't guess correctly
     foodElem.textContent = "Oops, maybe next time!";
     foodElem.style.color = incorrectTextColor; // colored red-ish for wrong answer
     foodElem.previousElementSibling.style.color = incorrectTextColor;
@@ -80,6 +80,7 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
     alert("Wrong! (hint: it's Oregon city)");
     console.log('They blew it');
 
+    // reveal that they didn't guess correctly
     birthplaceElem.textContent = "We all started somewhere...";
     birthplaceElem.style.color = incorrectTextColor; // colored red-ish for wrong answer
     birthplaceElem.previousElementSibling.style.color = incorrectTextColor;

@@ -11,19 +11,43 @@ section {
     margin-top: 20px;
 }
 section div {
-    min-height: 50vh;
+    min-height: 10vh;
+    padding: 5rem 1%;
 }
 section div h3 {
     font-weight: 200;
 }
 #myColorBlock,
 #myFoodBlock,
-#myBirthplaceBlock,
-#myAge {
+#myBirthplaceBlock {
     display: inline-block;
     text-align: center;
-    padding: 20px;
     width: 30%;
     margin: 0 auto;
+    border-radius: 5px;
+    transition: background-color 2s ease;
+
+    animation-name: blurIn;
+}
+
+#myAge {
+    background-color: #E3FCCA;
+    color: #7AC82B;
+    display: inline-block;
+    text-align: center;
+    padding: 5rem;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 5px;
     transition: background-color 1s ease;
+    min-height: 10vh;
+}
+
+@keyframes blurIn {
+    from {
+        color: transparent;
+    }
+    to {
+        color: inherit;
+    }
 }
