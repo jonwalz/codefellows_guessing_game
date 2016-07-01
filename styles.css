@@ -18,7 +18,8 @@ section div h3 {
 }
 #myColorBlock,
 #myFoodBlock,
-#myBirthplaceBlock {
+#myBirthplaceBlock,
+#myAge {
     display: inline-block;
     text-align: center;
     padding: 20px;

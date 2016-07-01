@@ -81,7 +81,7 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
 }
 
 /***********************
-   Favorite Color Logic
+     Guess My Age
 ***********************/
 
 var myAge = 31;
@@ -99,3 +99,8 @@ do {
         numberOfGuesses++;
     }
 } while (ageGuess != myAge);
+
+// Inset to document
+
+var ageDiv = document.getElementById('numberOfGuesses');
+ageDiv.textContent = numberOfGuesses;
