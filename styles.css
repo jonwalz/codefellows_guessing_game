@@ -4,6 +4,9 @@ body {
     background-color: #84B9D9;
     color: #D5EBF8;
 }
+body h3:first-of-type {
+    text-align: center;
+}
 section {
     width: 100%;
     text-align: center;
