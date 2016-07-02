@@ -5,6 +5,7 @@
 var myColor = 'yes';
 var colorGuess = prompt('Is my favorite color blue?', 'yes or no');
 var colorElem = document.getElementById('favoriteColor');
+var correctGuesses = 0;
 
 // colors
 var correctTextColor = "#7AC82B";
@@ -21,6 +22,7 @@ if (colorGuess.toLowerCase() == myColor) {
     colorElem.style.color = correctTextColor; // colored green-ish for correct answer
     colorElem.previousElementSibling.style.color = correctTextColor;
     colorElem.parentNode.style.backgroundColor = correctBGcolor;
+    correctGuesses++;
 } else {
     alert("Nope, maybe next time!");
     console.log("Hey, someone's trying to know about you, but they didn't guess right so it's all good!");
@@ -49,6 +51,7 @@ if (foodGuess.toLowerCase() == myFood) {
     foodElem.style.color = correctTextColor; // colored green-ish for correct answer
     foodElem.previousElementSibling.style.color = correctTextColor;
     foodElem.parentNode.style.backgroundColor = correctBGcolor;
+    correctGuesses++;
 } else {
     alert("Nope! I know, it's a hard one");
     console.log('They guessed wrong again lol');
@@ -76,6 +79,7 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
     birthplaceElem.style.color = correctTextColor; // colored green-ish for correct answer
     birthplaceElem.previousElementSibling.style.color = correctTextColor;
     birthplaceElem.parentNode.style.backgroundColor = correctBGcolor;
+    correctGuesses++;
 } else {
     alert("Wrong! (hint: it's Oregon city)");
     console.log('They blew it');
@@ -86,6 +90,14 @@ if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
     birthplaceElem.previousElementSibling.style.color = incorrectTextColor;
     birthplaceElem.parentNode.style.backgroundColor = incorrectBGcolor;
 }
+
+/***************************
+    Insert Correct Guesses
+***************************/
+
+var correctGuessesElem = document.getElementById('correctAnswers');
+correctGuessesElem.textContent = correctGuesses;
+
 
 /***********************
      Guess My Age Logic

@@ -37,3 +37,6 @@ section div h3 {
     transition: background-color 1s ease;
     min-height: 10vh;
 }
+#correctAnswersWrapper {
+    font-size: 2em;
+}
