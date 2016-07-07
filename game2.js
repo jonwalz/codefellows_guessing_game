@@ -46,28 +46,61 @@ var boxContents = {
     ]
 };
 
-var responseMethods = {
-    correctFunction: function(elem){
-        elem.textContent = boxContents.correct[i];
-        elem.style.color = colorObj.correctColors.correctTextColor;
-        elem.previousElementSibling.style.color = colorObj.correctColors.correctTextColor;
-        elem.parentNode.style.backgroundColor = colorObj.correctColors.correctBGcolor;
-    },
-    incorrectFunction: function(elem){
-        elem.textContent = boxContents.incorrect[i];
-        elem.style.color = colorObj.incorrectColors.incorrectTextColor;
-        elem.previousElementSibling.style.color = colorObj.incorrectColors.incorrectTextColor;
-        elem.parentNode.style.backgroundColor = colorObj.incorrectColors.incorrectBGcolor;
-    }
-};
+(function playTheGame() {
 
-for (var i = 0; i < questions.length; i++) {
-    var tempVar = prompt(questions[i], 'yes or no');
-    var tempElem = document.getElementById(idsArr[i]);
+    var responseMethods = {
+        correctFunction: function(elem) {
+            elem.textContent = boxContents.correct[i];
+            elem.style.color = colorObj.correctColors.correctTextColor;
+            elem.previousElementSibling.style.color = colorObj.correctColors.correctTextColor;
+            elem.parentNode.style.backgroundColor = colorObj.correctColors.correctBGcolor;
+        },
+        incorrectFunction: function(elem) {
+            elem.textContent = boxContents.incorrect[i];
+            elem.style.color = colorObj.incorrectColors.incorrectTextColor;
+            elem.previousElementSibling.style.color = colorObj.incorrectColors.incorrectTextColor;
+            elem.parentNode.style.backgroundColor = colorObj.incorrectColors.incorrectBGcolor;
+        }
+    };
 
-    if (tempVar == answers[i]) {
-        responseMethods.correctFunction(tempElem);
-    } else {
-        responseMethods.incorrectFunction(tempElem);
+    for (var i = 0; i < questions.length; i++) {
+        var tempVar = prompt(questions[i], 'yes or no');
+        var tempElem = document.getElementById(idsArr[i]);
+
+        if (tempVar == answers[i]) {
+            responseMethods.correctFunction(tempElem);
+            correctGuesses++;
+        } else {
+            responseMethods.incorrectFunction(tempElem);
+        }
     }
-}
+
+    // Age Game Logic
+
+
+    var myAge = 31;
+    var ageGuess = '';
+    var numberOfGuesses = 1;
+
+    do {
+        ageGuess = parseInt(prompt("Guess my age!"));
+        console.log("Number of guesses on your age: " + numberOfGuesses);
+        if (ageGuess < 31) {
+            if (ageGuess == 30) {
+                alert("Why thank you, but I'm " + (myAge - ageGuess) + " year older than that!");
+                numberOfGuesses++;
+            } else {
+                alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
+                numberOfGuesses++;
+            }
+        } else if (ageGuess > 31) {
+            if (ageGuess == 32) {
+                alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " year!");
+                numberOfGuesses++;
+            } else {
+                alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
+                numberOfGuesses++;
+            }
+        }
+    } while (ageGuess != myAge);
+}());
