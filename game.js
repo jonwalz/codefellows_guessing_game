@@ -1,11 +1,54 @@
+// Variables
+//
+// var colorElem = document.getElementById('favoriteColor');
+// var foodElem = document.getElementById('favoriteFood');
+// var birthplaceElem = document.getElementById('myBirthplace');
+
+var idsArr = [
+    'favoriteColor',
+    'favoriteFood',
+    'myBirthplace'
+];
+
+var elemArray = [
+    colorElem,
+    foodElem,
+    birthplaceElem
+];
+
+var correctGuesses = 0;
+
+// Question Logic
+
+var questions = [
+    'Is my favorite color blue?',
+    'Is my favorite food sushi?',
+    'Was I born in Portland?'
+];
+
+var answers = [
+    'yes',
+    'no',
+    'no'
+];
+
+for (var i = 0; i < questions.length; i++) {
+    var tempVar = prompt(questions[i], 'yes or no');
+    if (tempVar == answers[i]) {
+        var tempElem = document.getElementById(idsArr[i]);
+        console.log(elemArray[i]);
+    }
+}
+
+
 /***********************
    Favorite Color Logic
 ***********************/
 
-var myColor = 'yes';
+// var myColor = 'yes';
 var colorGuess = prompt('Is my favorite color blue?', 'yes or no');
-var colorElem = document.getElementById('favoriteColor');
-var correctGuesses = 0;
+
+
 
 // colors
 var correctTextColor = "#7AC82B";
@@ -40,7 +83,7 @@ if (colorGuess.toLowerCase() == myColor) {
 
 var myFood = 'no';
 var foodGuess = prompt('Is my favorite food sushi?', 'yes or no');
-var foodElem = document.getElementById('favoriteFood');
+
 
 if (foodGuess.toLowerCase() == myFood) {
     alert('Wow, you got it!');
@@ -68,7 +111,7 @@ if (foodGuess.toLowerCase() == myFood) {
 
 var myBirthplace = 'no';
 var myBirthplaceGuess = prompt('Was I born in Portland?', 'yes or no');
-var birthplaceElem = document.getElementById('myBirthplace');
+
 
 if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
     alert("No way! You coudn't have known that");
@@ -129,7 +172,7 @@ do {
     }
 } while (ageGuess != myAge);
 
-// Inset to document
+// Insert to document
 
 var ageDiv = document.getElementById('numberOfGuesses');
 
