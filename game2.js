@@ -1,20 +1,21 @@
 // Variables
-//
-// var colorElem = document.getElementById('favoriteColor');
-// var foodElem = document.getElementById('favoriteFood');
-// var birthplaceElem = document.getElementById('myBirthplace');
+
+var colorObj = {
+    correctColors: {
+        correctTextColor: "#7AC82B",
+        correctBGcolor: '#E3FCCA'
+    },
+    incorrectColors: {
+        incorrectTextColor: "#DE5A30",
+        incorrectBGcolor: '#FFD8CC'
+    }
+};
 
 var idsArr = [
     'favoriteColor',
     'favoriteFood',
     'myBirthplace'
 ];
-
-// var elemArray = [
-//     colorElem,
-//     foodElem,
-//     birthplaceElem
-// ];
 
 var correctGuesses = 0;
 
@@ -32,10 +33,41 @@ var answers = [
     'no'
 ];
 
+var boxContents = {
+    correct: [
+        "blue",
+        "You're right! it's Thai food!",
+        "Nope, I was born in Oregon City"
+    ],
+    incorrect: [
+        "You guessed wrong",
+        "Oops, maybe next time!",
+        "We all started somewhere..."
+    ]
+};
+
+var responseMethods = {
+    correctFunction: function(elem){
+        elem.textContent = boxContents.correct[i];
+        elem.style.color = colorObj.correctColors.correctTextColor;
+        elem.previousElementSibling.style.color = colorObj.correctColors.correctTextColor;
+        elem.parentNode.style.backgroundColor = colorObj.correctColors.correctBGcolor;
+    },
+    incorrectFunction: function(elem){
+        elem.textContent = boxContents.incorrect[i];
+        elem.style.color = colorObj.incorrectColors.incorrectTextColor;
+        elem.previousElementSibling.style.color = colorObj.incorrectColors.incorrectTextColor;
+        elem.parentNode.style.backgroundColor = colorObj.incorrectColors.incorrectBGcolor;
+    }
+};
+
 for (var i = 0; i < questions.length; i++) {
     var tempVar = prompt(questions[i], 'yes or no');
+    var tempElem = document.getElementById(idsArr[i]);
+
     if (tempVar == answers[i]) {
-        var tempElem = document.getElementById(idsArr[i]);
-        console.log(elemArray[i]);
+        responseMethods.correctFunction(tempElem);
+    } else {
+        responseMethods.incorrectFunction(tempElem);
     }
 }
