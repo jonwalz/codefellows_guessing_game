@@ -46,6 +46,8 @@ var boxContents = {
     ]
 };
 
+// It's all wrapped in a IIFE
+
 (function playTheGame() {
 
     var responseMethods = {
@@ -64,7 +66,7 @@ var boxContents = {
     };
 
     for (var i = 0; i < questions.length; i++) {
-        var tempVar = prompt(questions[i], 'yes or no');
+        var tempVar = prompt(questions[i], 'yes or no').trim().toLowerCase();
         var tempElem = document.getElementById(idsArr[i]);
 
         if (tempVar == answers[i]) {
@@ -77,13 +79,13 @@ var boxContents = {
 
     // Age Game Logic
 
-
     var myAge = 31;
     var ageGuess = '';
     var numberOfGuesses = 1;
 
+
     do {
-        ageGuess = parseInt(prompt("Guess my age!"));
+        ageGuess = parseInt(prompt("Guess my age!").trim().toLowerCase());
         console.log("Number of guesses on your age: " + numberOfGuesses);
         if (ageGuess < 31) {
             if (ageGuess == 30) {
@@ -103,4 +105,19 @@ var boxContents = {
             }
         }
     } while (ageGuess != myAge);
+
+    var ageDiv = document.getElementById('numberOfGuesses');
+
+    if (numberOfGuesses == 1) {
+        ageDiv.textContent = numberOfGuesses + " Try!";
+    } else {
+        ageDiv.textContent = numberOfGuesses + " Tries!";
+    }
+
+    /***************************
+        Insert Correct Guesses
+    ***************************/
+
+    var correctGuessesElem = document.getElementById('correctAnswers');
+    correctGuessesElem.textContent = correctGuesses;
 }());
