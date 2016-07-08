@@ -6,6 +6,7 @@ var myColor = 'yes';
 var colorGuess = prompt('Is my favorite color blue?', 'yes or no');
 var colorElem = document.getElementById('favoriteColor');
 var correctGuesses = 0;
+var showMe = 'show me';
 
 // colors
 var correctTextColor = "#7AC82B";
@@ -13,7 +14,7 @@ var incorrectTextColor = "#DE5A30";
 var correctBGcolor = '#E3FCCA';
 var incorrectBGcolor = '#FFD8CC';
 
-if (colorGuess.toLowerCase() == myColor) {
+if ((colorGuess.toLowerCase().trim() == myColor) || (colorGuess.toLowerCase().trim()== showMe)) {
     alert("You are correct!");
     console.log('Look out, someone is trying to know you. They guessed your favorite color: ' + colorGuess);
 
@@ -42,7 +43,7 @@ var myFood = 'no';
 var foodGuess = prompt('Is my favorite food sushi?', 'yes or no');
 var foodElem = document.getElementById('favoriteFood');
 
-if (foodGuess.toLowerCase() == myFood) {
+if ((foodGuess.toLowerCase().trim() == myFood) || (foodGuess.toLowerCase().trim()==showMe)) {
     alert('Wow, you got it!');
     console.log('Oh snap, the user is getting to know you! They guessed your favorite food. Check it: ' + myFood);
 
@@ -70,7 +71,7 @@ var myBirthplace = 'no';
 var myBirthplaceGuess = prompt('Was I born in Portland?', 'yes or no');
 var birthplaceElem = document.getElementById('myBirthplace');
 
-if (myBirthplaceGuess.toLowerCase() == myBirthplace) {
+if ((myBirthplaceGuess.toLowerCase().trim() == myBirthplace) || (myBirthplaceGuess.toLowerCase().trim() == showMe)) {
     alert("No way! You coudn't have known that");
     console.log("DANGER DANGER DANGER!!! They know where you're from!");
 
