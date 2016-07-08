@@ -1,4 +1,4 @@
-// Variables
+// Variables (the database?)
 
 var colorObj = {
     correctColors: {
@@ -24,13 +24,20 @@ var correctGuesses = 0;
 var questions = [
     'Is my favorite color blue?',
     'Is my favorite food sushi?',
-    'Was I born in Portland?'
+    'Was I born in Portland?',
+    'Guess one of the European cities I have visited'
 ];
 
 var answers = [
     'yes',
     'no',
-    'no'
+    'no', {
+        euroCities: [
+            'Paris',
+            'Rome',
+            'Florence'
+        ]
+    }
 ];
 
 var boxContents = {
@@ -48,71 +55,94 @@ var boxContents = {
 
 // It's all wrapped in a IIFE
 
-(function playTheGame() {
+(function playTheGames() {
 
-    var responseMethods = {
-        correctFunction: function(elem) {
-            elem.textContent = boxContents.correct[i];
-            elem.style.color = colorObj.correctColors.correctTextColor;
-            elem.previousElementSibling.style.color = colorObj.correctColors.correctTextColor;
-            elem.parentNode.style.backgroundColor = colorObj.correctColors.correctBGcolor;
-        },
-        incorrectFunction: function(elem) {
-            elem.textContent = boxContents.incorrect[i];
-            elem.style.color = colorObj.incorrectColors.incorrectTextColor;
-            elem.previousElementSibling.style.color = colorObj.incorrectColors.incorrectTextColor;
-            elem.parentNode.style.backgroundColor = colorObj.incorrectColors.incorrectBGcolor;
-        }
-    };
+    threeQuestions(); // function hoisting! weeeeee!!!
+    ageGame();
+    euroCities();
 
-    for (var i = 0; i < questions.length; i++) {
-        var tempVar = prompt(questions[i], 'yes or no').trim().toLowerCase();
-        var tempElem = document.getElementById(idsArr[i]);
+    function threeQuestions() {
+        var responseMethods = {
+            correctFunction: function(elem) {
+                elem.textContent = boxContents.correct[i];
+                elem.style.color = colorObj.correctColors.correctTextColor;
+                elem.previousElementSibling.style.color = colorObj.correctColors.correctTextColor;
+                elem.parentNode.style.backgroundColor = colorObj.correctColors.correctBGcolor;
+            },
+            incorrectFunction: function(elem) {
+                elem.textContent = boxContents.incorrect[i];
+                elem.style.color = colorObj.incorrectColors.incorrectTextColor;
+                elem.previousElementSibling.style.color = colorObj.incorrectColors.incorrectTextColor;
+                elem.parentNode.style.backgroundColor = colorObj.incorrectColors.incorrectBGcolor;
+            }
+        };
 
-        if (tempVar == answers[i]) {
-            responseMethods.correctFunction(tempElem);
-            correctGuesses++;
-        } else {
-            responseMethods.incorrectFunction(tempElem);
+        for (var i = 0; i < 3; i++) {
+            var tempVar = prompt(questions[i], 'yes or no').trim().toLowerCase();
+            var tempElem = document.getElementById(idsArr[i]);
+
+            if (tempVar == answers[i]) {
+                responseMethods.correctFunction(tempElem);
+                correctGuesses++;
+            } else {
+                responseMethods.incorrectFunction(tempElem);
+            }
         }
     }
 
     // Age Game Logic
+    function ageGame() {
 
-    var myAge = 31;
-    var ageGuess = '';
-    var numberOfGuesses = 1;
+        var myAge = 31;
+        var ageGuess = '';
+        var numberOfGuesses = 1;
 
-
-    do {
-        ageGuess = parseInt(prompt("Guess my age!").trim().toLowerCase());
-        console.log("Number of guesses on your age: " + numberOfGuesses);
-        if (ageGuess < 31) {
-            if (ageGuess == 30) {
-                alert("Why thank you, but I'm " + (myAge - ageGuess) + " year older than that!");
-                numberOfGuesses++;
-            } else {
-                alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
-                numberOfGuesses++;
+        do {
+            ageGuess = parseInt(prompt("Guess my age!").trim().toLowerCase());
+            if (ageGuess < 31) {
+                if (ageGuess == 30) {
+                    alert("Why thank you, but I'm " + (myAge - ageGuess) + " year older than that!");
+                    numberOfGuesses++;
+                } else {
+                    alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
+                    numberOfGuesses++;
+                }
+            } else if (ageGuess > 31) {
+                if (ageGuess == 32) {
+                    alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " year!");
+                    numberOfGuesses++;
+                } else {
+                    alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
+                    numberOfGuesses++;
+                }
             }
-        } else if (ageGuess > 31) {
-            if (ageGuess == 32) {
-                alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " year!");
-                numberOfGuesses++;
+        } while (ageGuess != myAge);
+
+        var ageDiv = document.getElementById('numberOfGuesses');
+
+        if (numberOfGuesses == 1) {
+            ageDiv.textContent = numberOfGuesses + " Try!";
+        } else {
+            ageDiv.textContent = numberOfGuesses + " Tries!";
+        }
+    }
+
+    // Euro cities game logic
+
+    function euroCities() {
+        var tempCityGuess = prompt(questions[3]);
+        var euroCitiesElem = document.getElementById('euroCities'); // reminds me of geocities LOL
+
+        for (var i = 0; i < answers[3].euroCities.length; i++) {
+            if(tempCityGuess == answers[3].euroCities[i]){
+                euroCitiesElem.textContent = 'Yes!';
+                console.log(answers[3].euroCities[i]);
             } else {
-                alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
-                numberOfGuesses++;
+                euroCitiesElem.textContent = 'Nope!';
             }
         }
-    } while (ageGuess != myAge);
-
-    var ageDiv = document.getElementById('numberOfGuesses');
-
-    if (numberOfGuesses == 1) {
-        ageDiv.textContent = numberOfGuesses + " Try!";
-    } else {
-        ageDiv.textContent = numberOfGuesses + " Tries!";
     }
+
 
     /***************************
         Insert Correct Guesses
