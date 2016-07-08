@@ -1,6 +1,7 @@
 #Code Fellows Guessing Game
 
 A simple guessing game asking questions about me!
+This is the third version of this game. (v0.3)
 
 ## Usage
 
