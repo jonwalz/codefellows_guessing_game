@@ -33,9 +33,9 @@ var answers = [
     'no',
     'no', {
         euroCities: [
-            'Paris',
-            'Rome',
-            'Florence'
+            'paris',
+            'rome',
+            'florence'
         ]
     }
 ];
@@ -56,10 +56,6 @@ var boxContents = {
 // It's all wrapped in a IIFE
 
 (function playTheGames() {
-
-    threeQuestions(); // function hoisting! weeeeee!!!
-    ageGame();
-    euroCities();
 
     function threeQuestions() {
         var responseMethods = {
@@ -130,24 +126,51 @@ var boxContents = {
     // Euro cities game logic
 
     function euroCities() {
-        var tempCityGuess = prompt(questions[3]);
-        var euroCitiesElem = document.getElementById('euroCities'); // reminds me of geocities LOL
 
+        var tempCityGuess = prompt(questions[3]).toLowerCase();
+        var euroCitiesElem = document.getElementById('euroCities'); // reminds me of geocities LOL
+        euroCitiesElem.textContent = 'Nope';
         for (var i = 0; i < answers[3].euroCities.length; i++) {
-            if(tempCityGuess == answers[3].euroCities[i]){
-                euroCitiesElem.textContent = 'Yes!';
-                console.log(answers[3].euroCities[i]);
-            } else {
-                euroCitiesElem.textContent = 'Nope!';
+
+            // Yeah I got this funciton off of stack exchange
+            // but I've been trying to understand protoype for a while and it finally clicked with this use!
+            String.prototype.capitalizeFirstLetter = function() {
+                return this.charAt(0).toUpperCase() + this.slice(1);
+            };
+
+            if (tempCityGuess == answers[3].euroCities[i].toLowerCase()) {
+
+                euroCitiesElem.textContent = 'Yes! I have been to ' + answers[3].euroCities[i].capitalizeFirstLetter();
+                console.log('Yes');
+                otherCities = '';
+
+                for (var j = 0; j < answers[3].euroCities.length; j++) {
+                    var newElement = document.createElement('LI');
+                    if (tempCityGuess != answers[3].euroCities[j].toLowerCase()) {
+                        newElement.textContent = answers[3].euroCities[j].capitalizeFirstLetter();
+                        document.getElementById('cityList').appendChild(newElement);
+                    }
+
+                }
             }
+
         }
     }
 
+    /************************************
+        Insert Number of Correct Guesses
+    ************************************/
 
-    /***************************
-        Insert Correct Guesses
-    ***************************/
+    function insertCorrect() {
+        var correctGuessesElem = document.getElementById('correctAnswers');
+        correctGuessesElem.textContent = correctGuesses;
+    }
 
-    var correctGuessesElem = document.getElementById('correctAnswers');
-    correctGuessesElem.textContent = correctGuesses;
+    // Make it all happen
+
+    threeQuestions();
+    ageGame();
+    euroCities();
+    insertCorrect();
+
 }());

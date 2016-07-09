@@ -18,7 +18,6 @@ section {
     margin-top: 5%;
 }
 section div {
-    min-height: 10vh;
     padding: 3.6% 1%;
 }
 section div h3 {
@@ -46,4 +45,9 @@ section div h3 {
 }
 #correctAnswersWrapper {
     font-size: 2em;
+}
+
+#cityList {
+    list-style-type: none;
+    padding-left: 0;
 }
