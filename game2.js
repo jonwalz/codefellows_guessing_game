@@ -44,78 +44,73 @@ var boxContents = {
 
 (function playTheGames() {
 
-    function threeQuestions() {
+        function threeQuestions() {
 
-        function correctFunction(elem) {
-            elem.textContent = boxContents.correct[i];
-            elem.parentNode.className = 'correctColors';
+            function correctFunction(elem) {
+                elem.textContent = boxContents.correct[i];
+                elem.parentNode.className = 'correctColors';
+                var imgElem = elem.createElement('img');
+                imgElem.src = 'img/correct.png';
+            }
+
+            function incorrectFunction(elem) {
+                elem.textContent = boxContents.incorrect[i];
+                elem.parentNode.className = 'incorrectColors';
+            }
+
+            // This loop prompts the first three quesions
+            for (var i = 0; i < 3; i++) {
+                var tempVar = prompt(questions[i], 'yes or no').trim().toLowerCase();
+                var tempElem = document.getElementById(idsArr[i]);
+
+                if (tempVar == answers[i]) {
+                    correctFunction(tempElem);
+                    correctGuesses++;
+                } else {
+                    incorrectFunction(tempElem);
+                }
+            }
         }
 
-        function incorrectFunction(elem) {
-            elem.textContent = boxContents.incorrect[i];
-            elem.parentNode.className = 'incorrectColors';
-        }
+        // Age Game Logic
+        function ageGame() {
 
-        // This loop prompts the first three quesions
-        for (var i = 0; i < 3; i++) {
-            var tempVar = prompt(questions[i], 'yes or no').trim().toLowerCase();
-            var tempElem = document.getElementById(idsArr[i]);
+            var myAge = 31;
+            var ageGuess = '';
+            var numberOfGuesses = 1;
+            do {
+                ageGuess = parseInt(prompt("Guess my age!").trim().toLowerCase());
+                var diff = Math.abs( ageGuess - myAge );
+                var underAgeGuess = "Why thank you, but I'm " + diff;
+                var overAgeGuess = "Woah, not quite that old yet. But I will be in " + diff;
 
-            if (tempVar == answers[i]) {
-                correctFunction(tempElem);
-                correctGuesses++;
+                if (ageGuess < 31) {
+                    underAgeGuess += diff == 1 ? " year older than that!" : " years older than that!";
+                    alert( underAgeGuess );
+                } else if (ageGuess > 31) {
+                    overAgeGuess += diff == 1 ? "year" : " years!";
+                    alert(overAgeGuess);
+                    numberOfGuesses++;
+                }
+            } while (ageGuess != myAge);
+
+            // Display the number of guesses it took before getting correct
+            var ageDiv = document.getElementById('numberOfGuesses');
+
+            if (numberOfGuesses == 1) {
+                ageDiv.textContent = numberOfGuesses + " Try!";
             } else {
-                incorrectFunction(tempElem);
+                ageDiv.textContent = numberOfGuesses + " Tries!";
             }
         }
-    }
 
-    // Age Game Logic
-    function ageGame() {
+        // Euro cities game logic
 
-        var myAge = 31;
-        var ageGuess = '';
-        var numberOfGuesses = 1;
+        function euroCities() {
 
-        do {
-            ageGuess = parseInt(prompt("Guess my age!").trim().toLowerCase());
-            if (ageGuess < 31) {
-                if (ageGuess == 30) {
-                    alert("Why thank you, but I'm " + (myAge - ageGuess) + " year older than that!");
-                    numberOfGuesses++;
-                } else {
-                    alert("Why thank you, but I'm " + (myAge - ageGuess) + " years older than that!");
-                    numberOfGuesses++;
-                }
-            } else if (ageGuess > 31) {
-                if (ageGuess == 32) {
-                    alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " year!");
-                    numberOfGuesses++;
-                } else {
-                    alert("Woah, not quite that old yet. But I will be in " + (ageGuess - myAge) + " years!");
-                    numberOfGuesses++;
-                }
-            }
-        } while (ageGuess != myAge);
-
-        // Display the number of guesses it took before getting correct
-        var ageDiv = document.getElementById('numberOfGuesses');
-
-        if (numberOfGuesses == 1) {
-            ageDiv.textContent = numberOfGuesses + " Try!";
-        } else {
-            ageDiv.textContent = numberOfGuesses + " Tries!";
-        }
-    }
-
-    // Euro cities game logic
-
-    function euroCities() {
-
-        var tempCityGuess = prompt(questions[3]).toLowerCase();
-        var euroCitiesElem = document.getElementById('euroCities'); // reminds me of geocities LOL
-        euroCitiesElem.textContent = 'Nope';
-        for (var i = 0; i < answers[3].euroCities.length; i++) {
+            var tempCityGuess = prompt(questions[3]).toLowerCase();
+            var euroCitiesElem = document.getElementById('euroCities'); // reminds me of geocities LOL
+            euroCitiesElem.textContent = 'Nope';
 
             // Yeah I got this funciton off of stack exchange
             // but I've been trying to understand protoype for a while and it finally clicked with this use!
@@ -123,11 +118,8 @@ var boxContents = {
                 return this.charAt(0).toUpperCase() + this.slice(1);
             };
 
-            if (tempCityGuess == answers[3].euroCities[i].toLowerCase()) {
-
-                euroCitiesElem.textContent = 'Yes! I have been to ' + answers[3].euroCities[i].capitalizeFirstLetter();
-                console.log('Yes');
-                otherCities = '';
+            if (answers[3].euroCities.indexOf(tempCityGuess) != -1) {
+                euroCitiesElem.textContent = 'Yes! I have been to ' + tempCityGuess.capitalizeFirstLetter();
 
                 // This for loop is to attach the non guessed cities onto the list
                 for (var j = 0; j < answers[3].euroCities.length; j++) {
@@ -138,9 +130,11 @@ var boxContents = {
                         document.getElementById('cityList').appendChild(newElement);
                     }
                 }
-            }
+            } else {
+                document.getElementById('otherCities').style.display = 'none';
+            }   
         }
-    }
+
 
     /************************************
         Insert Number of Correct Guesses
@@ -153,9 +147,6 @@ var boxContents = {
 
     // Make it all happen
 
-    threeQuestions();
-    ageGame();
-    euroCities();
-    insertCorrect();
+    threeQuestions(); ageGame(); euroCities(); insertCorrect();
 
 }());
