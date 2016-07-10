@@ -1,16 +1,3 @@
-// Variables (the database?)
-
-// var colorObj = {
-//     correctColors: {
-//         correctTextColor: "#7AC82B",
-//         correctBGcolor: '#E3FCCA'
-//     },
-//     incorrectColors: {
-//         incorrectTextColor: "#DE5A30",
-//         incorrectBGcolor: '#FFD8CC'
-//     }
-// };
-
 var idsArr = [
     'favoriteColor',
     'favoriteFood',
