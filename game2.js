@@ -73,6 +73,7 @@ var boxContents = {
             }
         };
 
+        // This loop prompts the first three quesions
         for (var i = 0; i < 3; i++) {
             var tempVar = prompt(questions[i], 'yes or no').trim().toLowerCase();
             var tempElem = document.getElementById(idsArr[i]);
@@ -144,6 +145,7 @@ var boxContents = {
                 console.log('Yes');
                 otherCities = '';
 
+                // This for loop is to attach the non guessed cities onto the list
                 for (var j = 0; j < answers[3].euroCities.length; j++) {
                     var newElement = document.createElement('LI');
                     if (tempCityGuess != answers[3].euroCities[j].toLowerCase()) {
