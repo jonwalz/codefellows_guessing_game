@@ -51,3 +51,13 @@ section div h3 {
     list-style-type: none;
     padding-left: 0;
 }
+
+.correctColors {
+    color: #7AC82B;
+    background-color: #E3FCCA;
+}
+
+.incorrectColors {
+    color: #DE5A30;
+    background-color: #FFD8CC;
+}

@@ -61,15 +61,11 @@ var boxContents = {
         var responseMethods = {
             correctFunction: function(elem) {
                 elem.textContent = boxContents.correct[i];
-                elem.style.color = colorObj.correctColors.correctTextColor;
-                elem.previousElementSibling.style.color = colorObj.correctColors.correctTextColor;
-                elem.parentNode.style.backgroundColor = colorObj.correctColors.correctBGcolor;
+                elem.parentNode.className = 'correctColors';
             },
             incorrectFunction: function(elem) {
                 elem.textContent = boxContents.incorrect[i];
-                elem.style.color = colorObj.incorrectColors.incorrectTextColor;
-                elem.previousElementSibling.style.color = colorObj.incorrectColors.incorrectTextColor;
-                elem.parentNode.style.backgroundColor = colorObj.incorrectColors.incorrectBGcolor;
+                elem.parentNode.className = 'incorrectColors';
             }
         };
 
