@@ -148,6 +148,7 @@ var boxContents = {
                 // This for loop is to attach the non guessed cities onto the list
                 for (var j = 0; j < answers[3].euroCities.length; j++) {
                     var newElement = document.createElement('LI');
+
                     if (tempCityGuess != answers[3].euroCities[j].toLowerCase()) {
                         newElement.textContent = answers[3].euroCities[j].capitalizeFirstLetter();
                         document.getElementById('cityList').appendChild(newElement);
