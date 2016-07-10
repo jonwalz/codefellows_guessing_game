@@ -1,15 +1,15 @@
 // Variables (the database?)
 
-var colorObj = {
-    correctColors: {
-        correctTextColor: "#7AC82B",
-        correctBGcolor: '#E3FCCA'
-    },
-    incorrectColors: {
-        incorrectTextColor: "#DE5A30",
-        incorrectBGcolor: '#FFD8CC'
-    }
-};
+// var colorObj = {
+//     correctColors: {
+//         correctTextColor: "#7AC82B",
+//         correctBGcolor: '#E3FCCA'
+//     },
+//     incorrectColors: {
+//         incorrectTextColor: "#DE5A30",
+//         incorrectBGcolor: '#FFD8CC'
+//     }
+// };
 
 var idsArr = [
     'favoriteColor',
@@ -58,16 +58,16 @@ var boxContents = {
 (function playTheGames() {
 
     function threeQuestions() {
-        var responseMethods = {
-            correctFunction: function(elem) {
-                elem.textContent = boxContents.correct[i];
-                elem.parentNode.className = 'correctColors';
-            },
-            incorrectFunction: function(elem) {
-                elem.textContent = boxContents.incorrect[i];
-                elem.parentNode.className = 'incorrectColors';
-            }
-        };
+
+        function correctFunction(elem) {
+            elem.textContent = boxContents.correct[i];
+            elem.parentNode.className = 'correctColors';
+        }
+
+        function incorrectFunction(elem) {
+            elem.textContent = boxContents.incorrect[i];
+            elem.parentNode.className = 'incorrectColors';
+        }
 
         // This loop prompts the first three quesions
         for (var i = 0; i < 3; i++) {
@@ -75,10 +75,10 @@ var boxContents = {
             var tempElem = document.getElementById(idsArr[i]);
 
             if (tempVar == answers[i]) {
-                responseMethods.correctFunction(tempElem);
+                correctFunction(tempElem);
                 correctGuesses++;
             } else {
-                responseMethods.incorrectFunction(tempElem);
+                incorrectFunction(tempElem);
             }
         }
     }
@@ -111,6 +111,7 @@ var boxContents = {
             }
         } while (ageGuess != myAge);
 
+        // Display the number of guesses it took before getting correct
         var ageDiv = document.getElementById('numberOfGuesses');
 
         if (numberOfGuesses == 1) {
@@ -149,10 +150,8 @@ var boxContents = {
                         newElement.textContent = answers[3].euroCities[j].capitalizeFirstLetter();
                         document.getElementById('cityList').appendChild(newElement);
                     }
-
                 }
             }
-
         }
     }
 
