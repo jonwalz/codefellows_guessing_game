@@ -46,7 +46,6 @@ var boxContents = {
 
     function threeQuestions() {
 
-
         function correctFunction(elem) {
             var imgElem = document.createElement('img');
             elem.textContent = boxContents.correct[i];
